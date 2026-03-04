@@ -288,7 +288,7 @@ if (!isMobile) {
       if (takeoverActive) dismissTakeover();
       cancelDwell();
       const currentSlot = Math.round(virtualCenter());
-      const nextSlot = e.key === 'ArrowUp' ? currentSlot + 1 : currentSlot - 1;
+      const nextSlot = e.key === 'ArrowUp' ? currentSlot - 1 : currentSlot + 1;
       snapToSlot(nextSlot);
     }
   });
