@@ -11,7 +11,7 @@ export interface Problem {
 
 // Color palettes per project
 const palette = {
-  bespoke:      { bg: '#1a1a2e', text: '#e0e0e0', accent: '#e0e0e0' },
+  bespoke:      { bg: '#420D07', text: '#F5C98E', accent: '#F5C98E' },
   cassini:      { bg: '#0d1b2a', text: '#e0e0e0', accent: '#48cae4' },
   camera:       { bg: '#1a0d2e', text: '#e0e0e0', accent: '#f472b6' },
   components:   { bg: '#0a192f', text: '#e0e0e0', accent: '#64ffda' },
