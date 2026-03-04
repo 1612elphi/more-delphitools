@@ -1,0 +1,122 @@
+<div class="pc-takeover">
+  <div class="pc-splash">
+    <div class="pc-blob left"></div>
+    <div class="pc-blob right"></div>
+    <img class="pc-logo" src="/images/logomark.svg" alt="PictoClash" />
+  </div>
+  <p class="pc-sub">Art trading. Art fighting. Art actually loading.</p>
+  <div class="pc-tags">
+    <span class="pc-tag">open source</span>
+    <span class="pc-tag">real-time</span>
+    <span class="pc-tag">modern stack</span>
+  </div>
+  <p class="pc-pitch">Draw someone's OC. They draw yours. Winner takes the round. Built on tech from this decade.</p>
+  <div class="pc-indicator">
+    <span class="pc-dot"></span>
+    <span class="pc-status">in development</span>
+  </div>
+</div>
+
+<style is:inline>
+  .pc-takeover {
+    max-width: 420px;
+    width: 100%;
+    text-align: center;
+  }
+  .pc-splash {
+    position: relative;
+    padding: 3rem 1.5rem;
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+    border-radius: 12px;
+  }
+  .pc-blob {
+    position: absolute;
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    filter: blur(50px);
+    opacity: 0.45;
+  }
+  .pc-blob.left {
+    background: #a3e635;
+    left: -60px;
+    top: -60px;
+    animation: pc-drift-l 4s ease-in-out infinite alternate;
+  }
+  .pc-blob.right {
+    background: #ec4899;
+    right: -60px;
+    bottom: -60px;
+    animation: pc-drift-r 4s ease-in-out infinite alternate;
+  }
+  @keyframes pc-drift-l {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(25px, 20px); }
+  }
+  @keyframes pc-drift-r {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(-25px, -20px); }
+  }
+  .pc-logo {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: drop-shadow(0 2px 12px rgba(0,0,0,0.4));
+  }
+  .pc-sub {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.5);
+    font-weight: 500;
+    margin-bottom: 1.25rem;
+  }
+  .pc-tags {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .pc-tag {
+    font-family: 'IBM Plex Mono', 'SF Mono', monospace;
+    font-size: 0.55rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    padding: 0.3rem 0.6rem;
+    border-radius: 20px;
+    border: 1px solid rgba(163,230,53,0.2);
+    color: rgba(255,255,255,0.4);
+  }
+  .pc-pitch {
+    font-size: 0.8rem;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.3);
+    margin-bottom: 2rem;
+    padding: 0 0.5rem;
+  }
+  .pc-indicator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  .pc-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #a3e635;
+    box-shadow: 0 0 6px #a3e635;
+    animation: pc-blink 2s ease-in-out infinite;
+  }
+  @keyframes pc-blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+  .pc-status {
+    font-family: 'IBM Plex Mono', 'SF Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    opacity: 0.3;
+  }
+</style>

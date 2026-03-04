@@ -1,0 +1,142 @@
+<div class="nomi-takeover">
+  <div class="wordmark">
+    <svg width="100%" viewBox="0 0 1156 180" xmlns="http://www.w3.org/2000/svg" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"><path d="M990.822,15.273l-99.797,0l-0,-10.466l99.797,-0l0,10.466Zm0,149.454l0,10.466l-99.797,0l-0,-10.466l99.797,-0Zm0,-149.454l10.467,0l0,149.454l-10.467,-0l0,-149.454Zm-990.676,159.92l-0,-170.386l10.467,-0l-0,170.386l-10.467,0Zm105.153,0l-0,-170.386l10.466,-0l0,170.386l-10.466,0Zm-94.2,-149.453l9.25,-5.112l84.706,149.697l-9.006,5.112l-84.95,-149.697Zm209.333,-23.124l7.302,7.302l-80.082,80.569l-7.546,-7.546l80.326,-80.325Zm15.091,0l79.595,80.082l-7.546,7.302l-79.595,-80.082l7.546,-7.302Zm72.049,87.627l7.302,7.303l-80.081,80.568l-7.303,-7.302l80.082,-80.569Zm-159.92,0.487l79.595,80.082l-7.546,7.302l-79.351,-80.081l7.302,-7.303Zm188.156,-84.219l9.006,-5.599l106.857,168.683l-9.007,5.598l-106.856,-168.682Zm100.041,-0l9.006,-5.599l107.1,168.683l-8.763,5.598l-107.343,-168.682Zm-94.443,168.682l0,-142.151l10.467,0l-0,142.151l-10.467,0Zm100.528,-21.907l0,-120.244l10.223,0l0,120.244l-10.223,0Zm128.277,-152.374l10.467,0l-0,41.136l-10.467,0l-0,-41.136Zm-0,76.918l10.467,-0l-0,97.363l-10.467,0l-0,-97.363Zm69.372,-62.557l-0,-10.466l76.674,-0l-0,10.466l-76.674,0Zm-36.999,147.263l26.775,-148.723l10.224,1.947l-26.775,148.723l-10.224,-1.947Zm113.916,-111.238l-0,-35.781l10.467,-0l-0,35.781l-10.467,-0Zm-25.315,113.185l9.007,-47.465l10.466,1.948l-9.249,47.465l-10.224,-1.948Zm-78.377,10.71l-0,-10.466l78.377,-0l0,10.466l-78.377,0Zm132.901,-159.92l0,-10.466l98.094,-0l0,10.466l-98.094,0Zm8.519,159.92l0,-157.486l10.467,0l0,157.486l-10.467,0Zm84.22,-87.627l0,-69.859l10.467,0l-0,69.859l-10.467,-0Zm-71.319,12.901l0,-10.467l76.674,0l0,10.467l-76.674,-0Zm20.933,3.894l9.737,-3.651l28.479,74.727l-9.737,3.651l-28.479,-74.727Zm92.253,60.366l-0,-149.454l10.466,0l0,149.454l-10.466,-0Zm159.92,10.466l-0,-170.386l10.466,-0l0,170.386l-10.466,0Zm105.152,0l0,-170.386l10.467,-0l0,170.386l-10.467,0Zm-94.199,-149.453l9.25,-5.112l84.706,149.697l-9.006,5.112l-84.95,-149.697Z" style="fill:#fff;"/></svg>
+  </div>
+  <p class="tagline">a completely fuckin bullshit card game.</p>
+  <div class="card-grid" id="nomi-cards">
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+  </div>
+  <p class="rules">print the deck. rewrite the rules. ruin your friendships.</p>
+  <a class="link" href="/projects/nomicron/">play &rarr;</a>
+  <p class="credit">designed by rmv. inspired by nomic.</p>
+</div>
+
+<script is:inline>
+(function() {
+  var grid = document.getElementById('nomi-cards');
+  if (!grid || grid.dataset.filled) return;
+  grid.dataset.filled = '1';
+  var rules = [
+    "Draw two cards.",
+    "Skip your next turn.",
+    "Reverse the turn order.",
+    "All players must discard one card.",
+    "Trade hands with another player.",
+    "The next player draws three cards.",
+    "All players pass their hands to the left.",
+    "Challenge the previous card played.",
+    "Copy the effect of the last card played.",
+    "Cards can only be played with your non-dominant hand.",
+    "Rip a card in half to veto any rule.",
+    "Game is now a roguelike. Death resets all rules.",
+    "Shuffle the rules mid-game. New order is retroactive.",
+    "The game was rigged from the start. Always was.",
+    "Every rule must be justified with a quote from a made-up ancient philosopher.",
+    "This rule exists in a quantum state until observed.",
+    "Rules can be traded like Pokemon cards.",
+    "Time flows backwards every third turn.",
+    "Winner is whoever holds the most pens when deck empties.",
+    "Voting is done by rock-paper-scissors. Always."
+  ];
+  var fonts = ['sans-serif', 'serif', 'monospace'];
+  var transforms = ['uppercase', 'lowercase', 'none'];
+  var aligns = ['start', 'center', 'end'];
+  for (var i = rules.length - 1; i > 0; i--) {
+    var j = Math.floor(Math.random() * (i + 1));
+    var t = rules[i]; rules[i] = rules[j]; rules[j] = t;
+  }
+  grid.querySelectorAll('.card').forEach(function(card, i) {
+    card.textContent = rules[i % rules.length];
+    card.style.fontFamily = fonts[Math.floor(Math.random() * 3)];
+    card.style.textTransform = transforms[Math.floor(Math.random() * 3)];
+    card.style.alignItems = aligns[Math.floor(Math.random() * 3)];
+    card.style.justifyContent = aligns[Math.floor(Math.random() * 3)];
+    card.style.fontStyle = Math.random() > 0.5 ? 'italic' : 'normal';
+    card.style.letterSpacing = (Math.random() * 0.15).toFixed(2) + 'em';
+  });
+})();
+</script>
+
+<style is:inline>
+  .nomi-takeover {
+    max-width: 420px;
+    width: 100%;
+    text-align: center;
+    padding: 1rem 0;
+  }
+  .wordmark {
+    padding: 0 1rem;
+    margin-bottom: 0.75rem;
+  }
+  .wordmark svg {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  .tagline {
+    font-size: 0.85rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    opacity: 0.4;
+    margin-bottom: 2rem;
+  }
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4px;
+    padding: 0 1rem;
+    margin-bottom: 2rem;
+  }
+  .nomi-takeover .card {
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 3px;
+    aspect-ratio: 2/3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.4rem;
+    font-weight: 800;
+    font-size: 0.55rem;
+    line-height: 1.2;
+    overflow: hidden;
+    transition: transform 200ms, background 200ms, border-color 200ms;
+  }
+  .nomi-takeover .card:hover {
+    transform: scale(1.05);
+    background: white;
+    color: black;
+    border-color: white;
+  }
+  .rules {
+    font-size: 0.75rem;
+    opacity: 0.3;
+    font-style: italic;
+    margin-bottom: 1.5rem;
+    padding: 0 1rem;
+  }
+  .nomi-takeover .link {
+    color: #fb7185;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    opacity: 0.6;
+    transition: opacity 200ms;
+  }
+  .nomi-takeover .link:hover { opacity: 1; }
+  .credit {
+    font-size: 0.6rem;
+    opacity: 0.15;
+    font-style: italic;
+    letter-spacing: 0.05em;
+    margin-top: 2rem;
+  }
+</style>

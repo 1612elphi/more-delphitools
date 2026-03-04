@@ -1,0 +1,170 @@
+<div class="pp-takeover">
+  <div class="pp-phone">
+    <div class="pp-notch"></div>
+    <div class="pp-screen">
+      <div class="pp-stack">
+        <div class="pp-reg"><span class="pp-lbl">T</span><span class="pp-v">0.0000</span></div>
+        <div class="pp-reg"><span class="pp-lbl">Z</span><span class="pp-v">0.0000</span></div>
+        <div class="pp-reg"><span class="pp-lbl">Y</span><span class="pp-v">0.0000</span></div>
+        <div class="pp-reg pp-active"><span class="pp-lbl">X</span><span class="pp-v" id="pp-x">_</span></div>
+      </div>
+      <div class="pp-keys">
+        <span class="pp-key fn">STO</span>
+        <span class="pp-key fn">RCL</span>
+        <span class="pp-key fn">ROT</span>
+        <span class="pp-key op">÷</span>
+        <span class="pp-key">7</span>
+        <span class="pp-key">8</span>
+        <span class="pp-key">9</span>
+        <span class="pp-key op">×</span>
+        <span class="pp-key">4</span>
+        <span class="pp-key">5</span>
+        <span class="pp-key">6</span>
+        <span class="pp-key op">−</span>
+        <span class="pp-key">1</span>
+        <span class="pp-key">2</span>
+        <span class="pp-key">3</span>
+        <span class="pp-key op">+</span>
+      </div>
+    </div>
+  </div>
+  <h1 class="pp-title">PocketPIGS</h1>
+  <p class="pp-sub">The same contempt. Now in your pocket.</p>
+  <div class="pp-indicator">
+    <span class="pp-dot"></span>
+    <span class="pp-status">in development</span>
+  </div>
+</div>
+
+<script is:inline>
+(function() {
+  var x = document.getElementById('pp-x');
+  if (!x || x.dataset.running) return;
+  x.dataset.running = '1';
+  var ops = ['25.4','72','297','0.3528','3.1416','841','2.8346','612','210','594'];
+  var i = 0;
+  function cycle() {
+    x.textContent = ops[i % ops.length];
+    i++;
+    setTimeout(cycle, 1800 + Math.random() * 1200);
+  }
+  setTimeout(cycle, 600);
+})();
+</script>
+
+<style is:inline>
+  .pp-takeover {
+    max-width: 340px;
+    width: 100%;
+    text-align: center;
+  }
+  .pp-phone {
+    background: #1a1a1a;
+    border-radius: 20px;
+    border: 2px solid #333;
+    padding: 0.75rem 0.75rem 1rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+  }
+  .pp-notch {
+    width: 80px;
+    height: 6px;
+    background: #000;
+    border-radius: 3px;
+    margin: 0 auto 0.75rem;
+  }
+  .pp-screen {
+    background: #000;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .pp-stack {
+    font-family: 'IBM Plex Mono', 'SF Mono', monospace;
+    padding: 0.75rem;
+  }
+  .pp-reg {
+    display: flex;
+    align-items: center;
+    padding: 0.35rem 0.5rem;
+  }
+  .pp-lbl {
+    font-size: 0.5rem;
+    font-weight: 700;
+    color: rgba(255,255,255,0.15);
+    width: 1rem;
+    text-align: left;
+  }
+  .pp-v {
+    flex: 1;
+    text-align: right;
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.12);
+    letter-spacing: 0.04em;
+  }
+  .pp-active { background: rgba(255,140,0,0.06); border-radius: 4px; }
+  .pp-active .pp-lbl { color: #ff8c00; }
+  .pp-active .pp-v { color: #ff8c00; font-weight: 600; font-size: 0.95rem; }
+  .pp-keys {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 3px;
+    padding: 0.5rem;
+  }
+  .pp-key {
+    font-family: 'IBM Plex Mono', 'SF Mono', monospace;
+    font-size: 0.65rem;
+    font-weight: 600;
+    color: #fff;
+    background: #222;
+    border-radius: 6px;
+    padding: 0.5rem 0;
+    text-align: center;
+  }
+  .pp-key.op {
+    background: #ff8c00;
+    color: #000;
+  }
+  .pp-key.fn {
+    background: #111;
+    color: rgba(255,255,255,0.4);
+    font-size: 0.55rem;
+  }
+  .pp-title {
+    font-family: 'IBM Plex Mono', 'SF Mono', monospace;
+    font-size: 2.2rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: #ffffff;
+    margin-bottom: 0.5rem;
+  }
+  .pp-sub {
+    font-size: 0.85rem;
+    color: #ff8c00;
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+  }
+  .pp-indicator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  .pp-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #ff8c00;
+    box-shadow: 0 0 6px #ff8c00;
+    animation: pp-blink 2s ease-in-out infinite;
+  }
+  @keyframes pp-blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+  .pp-status {
+    font-family: 'IBM Plex Mono', 'SF Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    opacity: 0.3;
+  }
+</style>

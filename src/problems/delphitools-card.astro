@@ -1,0 +1,91 @@
+---
+interface Props {
+  toolName: string;
+  toolPath: string;
+  tagline: string;
+  problem: string;
+}
+const { toolName, toolPath, tagline, problem } = Astro.props;
+---
+
+<div class="dt-takeover">
+  <h1 class="dt-wordmark">delphitools</h1>
+  <p class="dt-pitch">Free. Local. For artists who make things.</p>
+  <div class="dt-card">
+    <p class="dt-tool-name">{toolName}</p>
+    <p class="dt-tagline">{tagline}</p>
+    <a class="dt-button" href={`https://delphi.tools${toolPath}`}>open tool</a>
+  </div>
+  <img class="dt-mascot" src="/images/dt-mascot.png" alt="" />
+</div>
+
+<style is:inline>
+  @import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap');
+
+  .dt-takeover {
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+  }
+  .dt-wordmark {
+    font-family: 'Instrument Serif', Georgia, serif;
+    font-size: 4rem;
+    font-weight: 400;
+    font-style: italic;
+    color: #e8dcc8;
+    line-height: 1;
+    margin-bottom: 0.6rem;
+    letter-spacing: -0.02em;
+  }
+  .dt-pitch {
+    font-family: 'IBM Plex Mono', 'SF Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    color: #8a9a68;
+    margin-bottom: 2.5rem;
+  }
+  .dt-card {
+    background: rgba(138,154,104,0.06);
+    border: 1px solid rgba(138,154,104,0.15);
+    border-radius: 8px;
+    padding: 2.5rem 2rem;
+    margin-bottom: 1.5rem;
+  }
+  .dt-tool-name {
+    font-family: 'Instrument Serif', Georgia, serif;
+    font-size: 2rem;
+    font-weight: 400;
+    color: #e8dcc8;
+    line-height: 1.2;
+    margin-bottom: 0.75rem;
+  }
+  .dt-tagline {
+    font-size: 1rem;
+    color: #e8dcc8;
+    opacity: 0.45;
+    line-height: 1.5;
+    margin-bottom: 2rem;
+  }
+  .dt-button {
+    display: inline-block;
+    font-family: 'IBM Plex Mono', 'SF Mono', monospace;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: #0f150f;
+    background: #8a9a68;
+    text-decoration: none;
+    padding: 0.7rem 2rem;
+    border-radius: 5px;
+    transition: background 200ms, transform 100ms;
+  }
+  .dt-button:hover { background: #9aac74; transform: translateY(-1px); }
+  .dt-button:active { transform: translateY(0); }
+  .dt-mascot {
+    width: 150px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    border-radius: 4px;
+  }
+</style>

@@ -1,0 +1,67 @@
+---
+import { problems } from '../../data/problems';
+import DelphitoolsCard from '../../problems/delphitools-card.astro';
+import ComingSoon from '../../problems/coming-soon.astro';
+
+export function getStaticPaths() {
+  const seen = new Set<string>();
+  return problems.filter(p => {
+    if (seen.has(p.slug)) return false;
+    seen.add(p.slug);
+    return true;
+  }).map(p => ({ params: { slug: p.slug } }));
+}
+
+const { slug } = Astro.params;
+const problem = problems.find(p => p.slug === slug)!;
+
+// Delphitools slug → tool mapping
+const dtTools: Record<string, { name: string; path: string; tagline: string }> = {
+  'convert-image':     { name: 'Image Converter',    path: '/tools/image-converter',    tagline: 'Drop it in. Get it out. Any format.' },
+  'qr-codes':          { name: 'QR Generator',       path: '/tools/qr-genny',           tagline: 'From text to scannable in one click.' },
+  'colour-palettes':   { name: 'Palette Generator',  path: '/tools/palette-genny',       tagline: 'Gorgeous palettes. Zero decision fatigue.' },
+  'png-lied':          { name: 'Background Remover', path: '/tools/background-remover',  tagline: 'The background was never the point.' },
+  'watermark':         { name: 'Watermarker',        path: '/tools/watermarker',         tagline: 'Your work. Your name on it.' },
+  'cant-pick-colours': { name: 'Harmony Generator',  path: '/tools/harmony-genny',       tagline: 'Colours that actually get along.' },
+  'nobody-can-read':   { name: 'Contrast Checker',   path: '/tools/contrast-checker',    tagline: 'If they can\'t read it, it doesn\'t exist.' },
+  'sick-svgs':         { name: 'SVG Optimiser',      path: '/tools/svg-optimiser',        tagline: 'Less XML. Same picture.' },
+  'letter-paper':      { name: 'Paper Sizes',        path: '/tools/paper-sizes',          tagline: 'Every standard. Every dimension. Instantly.' },
+  'meta-tags':         { name: 'Meta Tag Generator',  path: '/tools/meta-tag-genny',      tagline: 'The tags search engines actually want.' },
+  'regex-blows':       { name: 'Regex Tester',       path: '/tools/regex-tester',         tagline: 'Write it. Test it. Ship it. Move on.' },
+  'date-line-meeting': { name: 'Time Calculator',    path: '/tools/time-calc',            tagline: 'Because nobody knows what time it is over there.' },
+};
+const dtTool = dtTools[slug];
+
+// Try to load problem-specific content
+let ProblemContent: any = null;
+const allProblems = import.meta.glob('../../problems/*.astro', { eager: true });
+const key = Object.keys(allProblems).find(k => k.includes(`/${slug}.astro`));
+if (key) {
+  ProblemContent = (allProblems[key] as any).default;
+}
+---
+
+<div class="problem-detail" data-project={problem.project} style={`--accent: ${problem.colors.accent};`}>
+  {dtTool ? (
+    <DelphitoolsCard toolName={dtTool.name} toolPath={dtTool.path} tagline={dtTool.tagline} problem={problem.label} />
+  ) : ProblemContent ? <ProblemContent /> : (
+    <ComingSoon project={problem.project} />
+  )}
+</div>
+
+<style>
+  .problem-detail {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .problem-placeholder {
+    text-align: center;
+  }
+  .problem-placeholder h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+</style>

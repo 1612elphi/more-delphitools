@@ -1,0 +1,136 @@
+<div class="cassini-takeover">
+  <div class="stripe-rule">
+    <div style="background:#c4523a"></div>
+    <div style="background:#d4774a"></div>
+    <div style="background:#d4a843"></div>
+    <div style="background:#8a9a68"></div>
+    <div style="background:#5a8a8a"></div>
+    <div style="background:#6a7a9a"></div>
+  </div>
+  <div class="content">
+    <p class="ecs">ecs-1</p>
+    <h2>Cassini</h2>
+    <p class="subtitle">electrographic creation suite</p>
+    <p class="motto">create with limits.</p>
+    <div class="grid">
+      <div class="cell">
+        <span class="num">16</span>
+        <span class="lbl">palettes</span>
+      </div>
+      <div class="cell">
+        <span class="num">06</span>
+        <span class="lbl">processors</span>
+      </div>
+      <div class="cell">
+        <span class="num">15</span>
+        <span class="lbl">fills</span>
+      </div>
+    </div>
+    <p class="desc">a fixed-format electrographic instrument. no colour wheel. no layers. curated palettes, real-time pixel processors, and procedural pattern generators. the creative tool that says no.</p>
+    <a class="link" href="/projects/cassini/">full page &rarr;</a>
+  </div>
+  <div class="stripe-rule">
+    <div style="background:#6a7a9a"></div>
+    <div style="background:#5a8a8a"></div>
+    <div style="background:#8a9a68"></div>
+    <div style="background:#d4a843"></div>
+    <div style="background:#d4774a"></div>
+    <div style="background:#c4523a"></div>
+  </div>
+</div>
+
+<style is:inline>
+  .cassini-takeover {
+    max-width: 520px;
+    width: 100%;
+    font-family: 'Newsreader', Georgia, serif;
+    color: #e8e4dc;
+  }
+  .stripe-rule {
+    display: flex;
+    height: 3px;
+    width: 100%;
+  }
+  .stripe-rule > div { flex: 1; }
+  .content {
+    padding: 2.5rem 2rem;
+    text-align: center;
+  }
+  .ecs {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    opacity: 0.35;
+    margin-bottom: 0.5rem;
+  }
+  h2 {
+    font-family: 'Instrument Serif', Georgia, serif;
+    font-size: clamp(3rem, 7vw, 4.5rem);
+    font-weight: 400;
+    font-style: italic;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    margin-bottom: 0.25rem;
+    color: #e8e4dc;
+  }
+  .subtitle {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    opacity: 0.3;
+    margin-bottom: 2rem;
+  }
+  .motto {
+    font-size: 1.3rem;
+    font-style: italic;
+    opacity: 0.6;
+    margin-bottom: 2rem;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    margin-bottom: 2rem;
+  }
+  .cell {
+    background: #2d2d33;
+    padding: 1.2rem 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+  }
+  .num {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: #8a9a68;
+  }
+  .lbl {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    opacity: 0.35;
+  }
+  .desc {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    opacity: 0.5;
+    margin-bottom: 2rem;
+  }
+  .link {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    color: #c4523a;
+    text-decoration: none;
+    opacity: 0.6;
+    transition: opacity 200ms;
+  }
+  .link:hover { opacity: 1; }
+</style>

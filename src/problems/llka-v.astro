@@ -1,0 +1,126 @@
+<div class="llka-takeover">
+  <div class="llka-card">
+    <div class="llka-bar"></div>
+    <div class="llka-body">
+      <h1 class="llka-title">LLKA-V</h1>
+      <p class="llka-sub">Library of Things Management Suite</p>
+      <div class="llka-divider"></div>
+      <div class="llka-modules">
+        <div class="llka-mod">
+          <span class="llka-mod-name">frontend</span>
+          <span class="llka-mod-desc">Public catalogue & booking</span>
+        </div>
+        <div class="llka-mod">
+          <span class="llka-mod-name">backend</span>
+          <span class="llka-mod-desc">API & database layer</span>
+        </div>
+        <div class="llka-mod">
+          <span class="llka-mod-name">self-service</span>
+          <span class="llka-mod-desc">Kiosk checkout terminal</span>
+        </div>
+        <div class="llka-mod">
+          <span class="llka-mod-name">reservations</span>
+          <span class="llka-mod-desc">Booking & availability</span>
+        </div>
+        <div class="llka-mod">
+          <span class="llka-mod-name">management</span>
+          <span class="llka-mod-desc">Admin dashboard</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p class="llka-pitch">Open source. Self-hostable. Currently running the <span class="llka-hl">leih.lokal Karlsruhe</span>.</p>
+  <a class="llka-button" href="https://github.com/leih-lokal">view on github</a>
+</div>
+
+<style is:inline>
+  @import url('https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&display=swap');
+
+  .llka-takeover {
+    max-width: 380px;
+    width: 100%;
+    text-align: center;
+    font-family: 'Geist', 'Univers', -apple-system, system-ui, sans-serif;
+  }
+  .llka-card {
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+  }
+  .llka-bar {
+    height: 6px;
+    background: #e53935;
+  }
+  .llka-body {
+    background: #ffffff;
+    padding: 2rem 1.5rem;
+    color: #1a1a1a;
+  }
+  .llka-title {
+    font-size: 2.4rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    color: #1a1a1a;
+    margin-bottom: 0.3rem;
+  }
+  .llka-sub {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: #666;
+    margin-bottom: 1.25rem;
+  }
+  .llka-divider {
+    height: 1px;
+    background: #e0e0e0;
+    margin-bottom: 1.25rem;
+  }
+  .llka-modules {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    text-align: left;
+  }
+  .llka-mod {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+  }
+  .llka-mod-name {
+    font-family: 'IBM Plex Mono', 'SF Mono', monospace;
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: #e53935;
+    letter-spacing: 0.03em;
+    min-width: 90px;
+  }
+  .llka-mod-desc {
+    font-size: 0.7rem;
+    color: #888;
+  }
+  .llka-pitch {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.4);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+  .llka-hl {
+    color: #e53935;
+    font-weight: 600;
+  }
+  .llka-button {
+    display: inline-block;
+    font-family: 'Geist', 'Univers', -apple-system, system-ui, sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    color: #ffffff;
+    background: #e53935;
+    text-decoration: none;
+    padding: 0.7rem 2rem;
+    border-radius: 4px;
+    transition: background 200ms, transform 100ms;
+  }
+  .llka-button:hover { background: #ef5350; transform: translateY(-1px); }
+  .llka-button:active { transform: translateY(0); }
+</style>

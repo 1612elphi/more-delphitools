@@ -1,0 +1,29 @@
+---
+interface Props {
+  project: string;
+}
+const { project } = Astro.props;
+---
+
+<div class="cs-takeover">
+  <p class="cs-label">coming soon</p>
+  <h2 class="cs-project">{project}</h2>
+</div>
+
+<style is:inline>
+  .cs-takeover {
+    text-align: center;
+  }
+  .cs-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    opacity: 0.2;
+    margin-bottom: 0.75rem;
+  }
+  .cs-project {
+    font-size: 1.8rem;
+    font-weight: 700;
+    opacity: 0.35;
+  }
+</style>

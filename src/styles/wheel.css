@@ -1,0 +1,106 @@
+.wheel {
+  position: absolute;
+  left: -480px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  touch-action: none;
+}
+
+.spoke {
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform-origin: 0 0;
+  white-space: normal;
+  width: 500px;
+  line-height: 1.2;
+  font-size: 1.3rem;
+  font-weight: 600;
+  text-transform: lowercase;
+  padding-left: 2.5rem;
+  cursor: default;
+  will-change: transform;
+  transition: opacity 150ms ease, font-size 150ms ease;
+  color: var(--text-color, #e0e0e0);
+  opacity: 0.3;
+}
+
+.spoke.active {
+  opacity: 1;
+  font-size: 1.5rem;
+}
+
+.wheel.dimmed .spoke {
+  opacity: 0.15;
+  transition: opacity 400ms ease;
+}
+.wheel.dimmed .spoke.active {
+  opacity: 0.4;
+}
+
+.wheel-label {
+  position: absolute;
+  left: 520px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: 'Georgia', 'Times New Roman', serif;
+  font-style: italic;
+  font-size: 2.2rem;
+  font-weight: 400;
+  text-transform: lowercase;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+  color: var(--text-color, #e0e0e0);
+  opacity: 0.4;
+  pointer-events: none;
+  transition: opacity 400ms ease;
+}
+
+.wheel.dimmed .wheel-label {
+  opacity: 0.08;
+}
+
+.mobile-list {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .wheel { display: none; }
+  .mobile-list {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 100vh;
+    padding: 1rem;
+  }
+  .mobile-item {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    overflow: hidden;
+  }
+  .mobile-item-label {
+    padding: 1.25rem 0.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-transform: lowercase;
+    opacity: 0.5;
+    cursor: pointer;
+    transition: opacity 200ms, color 200ms;
+  }
+  .mobile-item.open .mobile-item-label {
+    opacity: 1;
+    color: var(--accent-color, var(--text-color, #e0e0e0));
+  }
+  .mobile-item-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 400ms ease, padding 400ms ease;
+    padding: 0 0.5rem;
+  }
+  .mobile-item.open .mobile-item-content {
+    max-height: 80vh;
+    padding: 1rem 0.5rem 2rem;
+    overflow-y: auto;
+  }
+}

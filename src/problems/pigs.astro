@@ -1,0 +1,112 @@
+<div class="pigs-takeover">
+  <div class="stack">
+    <div class="register"><span class="reg-label">T</span><span class="reg-val">0.0000</span></div>
+    <div class="register"><span class="reg-label">Z</span><span class="reg-val">0.0000</span></div>
+    <div class="register"><span class="reg-label">Y</span><span class="reg-val">0.0000</span></div>
+    <div class="register active"><span class="reg-label">X</span><span class="reg-val" id="pigs-x">_</span></div>
+  </div>
+  <h1 class="pigs-title">PIGS</h1>
+  <p class="pigs-sub">An RPN calculator for people who actually use calculators.</p>
+  <p class="pigs-desc">Physical hardware. Orange keys. Four-register stack. Built for designers and printmakers with contempt for everything else on the market.</p>
+  <a class="pigs-button" href="https://github.com/1612elphi/pigs">view on github</a>
+</div>
+
+<script is:inline>
+(function() {
+  var x = document.getElementById('pigs-x');
+  if (!x || x.dataset.running) return;
+  x.dataset.running = '1';
+  var ops = ['3.1416','210','297','0.3528','72','2.8346','841','594','25.4','612','792','0.0139'];
+  var i = 0;
+  function cycle() {
+    x.textContent = ops[i % ops.length];
+    i++;
+    setTimeout(cycle, 2000 + Math.random() * 1000);
+  }
+  setTimeout(cycle, 800);
+})();
+</script>
+
+<style is:inline>
+  .pigs-takeover {
+    max-width: 380px;
+    width: 100%;
+    text-align: center;
+  }
+  .stack {
+    font-family: 'IBM Plex Mono', 'SF Mono', monospace;
+    border: 1px solid rgba(255,140,0,0.15);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 2rem;
+  }
+  .register {
+    display: flex;
+    align-items: center;
+    padding: 0.6rem 1rem;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .register:last-child { border-bottom: none; }
+  .reg-label {
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.2);
+    width: 1.5rem;
+    text-align: left;
+  }
+  .reg-val {
+    flex: 1;
+    text-align: right;
+    font-size: 1rem;
+    color: rgba(255,255,255,0.15);
+    letter-spacing: 0.05em;
+  }
+  .register.active {
+    background: rgba(255,140,0,0.06);
+  }
+  .register.active .reg-label {
+    color: #ff8c00;
+  }
+  .register.active .reg-val {
+    color: #ff8c00;
+    font-weight: 600;
+    font-size: 1.2rem;
+  }
+  .pigs-title {
+    font-family: 'IBM Plex Mono', 'SF Mono', monospace;
+    font-size: 3rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: #ffffff;
+    margin-bottom: 0.5rem;
+  }
+  .pigs-sub {
+    font-size: 0.9rem;
+    color: #ff8c00;
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+  }
+  .pigs-desc {
+    font-size: 0.8rem;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.35);
+    margin-bottom: 2rem;
+    padding: 0 0.5rem;
+  }
+  .pigs-button {
+    display: inline-block;
+    font-family: 'IBM Plex Mono', 'SF Mono', monospace;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: #000000;
+    background: #ff8c00;
+    text-decoration: none;
+    padding: 0.7rem 2rem;
+    border-radius: 4px;
+    transition: background 200ms, transform 100ms;
+  }
+  .pigs-button:hover { background: #ff9f2e; transform: translateY(-1px); }
+  .pigs-button:active { transform: translateY(0); }
+</style>

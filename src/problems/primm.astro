@@ -1,0 +1,125 @@
+<div class="primm-takeover">
+  <div class="primm-sheet">
+    <div class="reg-mark tl"><svg viewBox="0 0 24 24" width="16" height="16"><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="0.8"/><line x1="0" y1="12" x2="8" y2="12" stroke="currentColor" stroke-width="0.5"/><line x1="16" y1="12" x2="24" y2="12" stroke="currentColor" stroke-width="0.5"/><line x1="12" y1="0" x2="12" y2="8" stroke="currentColor" stroke-width="0.5"/><line x1="12" y1="16" x2="12" y2="24" stroke="currentColor" stroke-width="0.5"/></svg></div>
+    <div class="reg-mark tr"><svg viewBox="0 0 24 24" width="16" height="16"><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="0.8"/><line x1="0" y1="12" x2="8" y2="12" stroke="currentColor" stroke-width="0.5"/><line x1="16" y1="12" x2="24" y2="12" stroke="currentColor" stroke-width="0.5"/><line x1="12" y1="0" x2="12" y2="8" stroke="currentColor" stroke-width="0.5"/><line x1="12" y1="16" x2="12" y2="24" stroke="currentColor" stroke-width="0.5"/></svg></div>
+    <div class="reg-mark bl"><svg viewBox="0 0 24 24" width="16" height="16"><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="0.8"/><line x1="0" y1="12" x2="8" y2="12" stroke="currentColor" stroke-width="0.5"/><line x1="16" y1="12" x2="24" y2="12" stroke="currentColor" stroke-width="0.5"/><line x1="12" y1="0" x2="12" y2="8" stroke="currentColor" stroke-width="0.5"/><line x1="12" y1="16" x2="12" y2="24" stroke="currentColor" stroke-width="0.5"/></svg></div>
+    <div class="reg-mark br"><svg viewBox="0 0 24 24" width="16" height="16"><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="0.8"/><line x1="0" y1="12" x2="8" y2="12" stroke="currentColor" stroke-width="0.5"/><line x1="16" y1="12" x2="24" y2="12" stroke="currentColor" stroke-width="0.5"/><line x1="12" y1="0" x2="12" y2="8" stroke="currentColor" stroke-width="0.5"/><line x1="12" y1="16" x2="12" y2="24" stroke="currentColor" stroke-width="0.5"/></svg></div>
+    <div class="cmyk-bar">
+      <span class="swatch c"></span>
+      <span class="swatch m"></span>
+      <span class="swatch y"></span>
+      <span class="swatch k"></span>
+    </div>
+    <div class="primm-inner">
+      <h1 class="primm-title">PRIMM</h1>
+      <div class="primm-rule"></div>
+      <p class="primm-sub">Job management for print shops.</p>
+    </div>
+    <p class="primm-micro">PRIMM v1 &bull; PROCESS CMYK &bull; 300 DPI &bull; FOGRA39</p>
+  </div>
+  <p class="primm-pitch">Track jobs. Hit deadlines. Stop losing proofs in your inbox.</p>
+  <div class="primm-indicator">
+    <span class="primm-dot"></span>
+    <span class="primm-status">in development</span>
+  </div>
+</div>
+
+<style is:inline>
+  .primm-takeover {
+    max-width: 380px;
+    width: 100%;
+    text-align: center;
+  }
+  .primm-sheet {
+    background: #f5f3ef;
+    border-radius: 2px;
+    padding: 2rem 1.5rem 1rem;
+    margin-bottom: 2rem;
+    position: relative;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    color: #1a1a1a;
+  }
+  .reg-mark {
+    position: absolute;
+    color: rgba(0,0,0,0.2);
+  }
+  .reg-mark.tl { top: 8px; left: 8px; }
+  .reg-mark.tr { top: 8px; right: 8px; }
+  .reg-mark.bl { bottom: 8px; left: 8px; }
+  .reg-mark.br { bottom: 8px; right: 8px; }
+  .cmyk-bar {
+    display: flex;
+    gap: 4px;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+  }
+  .swatch {
+    width: 28px;
+    height: 8px;
+    border-radius: 1px;
+  }
+  .swatch.c { background: #00aeef; }
+  .swatch.m { background: #ec008c; }
+  .swatch.y { background: #fff200; }
+  .swatch.k { background: #1a1a1a; }
+  .primm-inner {
+    padding: 0 1rem;
+    margin-bottom: 1rem;
+  }
+  .primm-title {
+    font-family: 'IBM Plex Mono', 'SF Mono', monospace;
+    font-size: 2.4rem;
+    font-weight: 800;
+    letter-spacing: 0.2em;
+    color: #1a1a1a;
+    margin-bottom: 0.4rem;
+  }
+  .primm-rule {
+    width: 40px;
+    height: 2px;
+    background: #ec008c;
+    margin: 0 auto 0.6rem;
+  }
+  .primm-sub {
+    font-size: 0.8rem;
+    color: #555;
+    font-weight: 500;
+  }
+  .primm-micro {
+    font-family: 'IBM Plex Mono', 'SF Mono', monospace;
+    font-size: 0.4rem;
+    letter-spacing: 0.2em;
+    color: rgba(0,0,0,0.15);
+    margin-top: 0.5rem;
+  }
+  .primm-pitch {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.35);
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+  }
+  .primm-indicator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  .primm-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #f97316;
+    box-shadow: 0 0 6px #f97316;
+    animation: primm-blink 2s ease-in-out infinite;
+  }
+  @keyframes primm-blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+  .primm-status {
+    font-family: 'IBM Plex Mono', 'SF Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    opacity: 0.3;
+  }
+</style>

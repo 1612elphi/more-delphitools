@@ -1,0 +1,135 @@
+<div class="takeover-zone" id="takeover-zone">
+  <div class="default-content" id="default-content">
+    <h1>delphitools</h1>
+    <p>things I've built to solve problems</p>
+  </div>
+  <div class="takeover-content" id="takeover-content"></div>
+  <button class="back-button" id="back-button">&larr; Back</button>
+</div>
+
+<script>
+  const defaultContent = document.getElementById('default-content')!;
+  const takeoverContent = document.getElementById('takeover-content')!;
+
+  document.addEventListener('takeover', async (e: Event) => {
+    const { slug, colors } = (e as CustomEvent).detail;
+
+    // Transition background
+    document.body.style.setProperty('--bg-color', colors.bg);
+    document.body.style.setProperty('--text-color', colors.text);
+    document.body.style.setProperty('--accent-color', colors.accent);
+
+    // Remove previously injected styles
+    document.querySelectorAll('style[data-takeover]').forEach(s => s.remove());
+
+    // Fetch problem detail page
+    try {
+      const res = await fetch(`/problems/${slug}/`);
+      const html = await res.text();
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(html, 'text/html');
+      const content = doc.querySelector('.problem-detail');
+      if (content) {
+        takeoverContent.innerHTML = content.outerHTML;
+      }
+      // Inject the page's styles into the document head
+      doc.querySelectorAll('style').forEach(style => {
+        const s = document.createElement('style');
+        s.textContent = style.textContent;
+        s.setAttribute('data-takeover', slug);
+        document.head.appendChild(s);
+      });
+      // Execute scripts from the fetched page
+      doc.querySelectorAll('script').forEach(script => {
+        if (script.textContent) {
+          const s = document.createElement('script');
+          s.textContent = script.textContent;
+          s.setAttribute('data-takeover', slug);
+          document.body.appendChild(s);
+        }
+      });
+    } catch (err) {
+      takeoverContent.innerHTML = `<p>Could not load details for ${slug}</p>`;
+    }
+
+    // Animate in
+    defaultContent.classList.add('hidden');
+    takeoverContent.classList.add('active');
+    document.getElementById('takeover-zone')!.classList.add('mobile-active');
+  });
+
+  document.addEventListener('takeover-dismiss', () => {
+    // Reset background
+    document.body.style.setProperty('--bg-color', '#1a1a2e');
+    document.body.style.setProperty('--text-color', '#e0e0e0');
+    document.body.style.removeProperty('--accent-color');
+
+    // Animate out
+    takeoverContent.classList.remove('active');
+    defaultContent.classList.remove('hidden');
+    takeoverContent.innerHTML = '';
+    document.querySelectorAll('style[data-takeover]').forEach(s => s.remove());
+    document.querySelectorAll('script[data-takeover]').forEach(s => s.remove());
+    document.getElementById('takeover-zone')!.classList.remove('mobile-active');
+  });
+
+  // Back button (mobile)
+  document.getElementById('back-button')!.addEventListener('click', () => {
+    document.dispatchEvent(new CustomEvent('takeover-dismiss'));
+  });
+</script>
+
+<style>
+  .takeover-zone {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  .default-content {
+    text-align: center;
+    transition: opacity 400ms ease;
+  }
+  .default-content h1 {
+    font-size: 4rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.5rem;
+  }
+  .default-content p {
+    font-size: 1.2rem;
+    opacity: 0.6;
+  }
+  .default-content.hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+  .takeover-content {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    padding: 2rem;
+    overflow-y: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateX(20px);
+    transition: opacity 400ms ease, transform 400ms ease;
+    pointer-events: none;
+  }
+  .takeover-content.active {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: auto;
+  }
+  .back-button {
+    display: none;
+  }
+
+  @media (max-width: 768px) {
+    .takeover-zone {
+      display: none;
+    }
+  }
+</style>

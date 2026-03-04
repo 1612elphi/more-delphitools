@@ -1,0 +1,51 @@
+---
+import type { Problem } from '../data/problems';
+
+interface Props {
+  problems: Problem[];
+}
+
+const { problems } = Astro.props;
+const SPOKE_ANGLE = 6;
+const VISIBLE_SPOKES = 31;
+const WHEEL_RADIUS = 700;
+---
+
+<div class="wheel" id="wheel"
+  data-problems={JSON.stringify(problems)}
+  data-spoke-angle={SPOKE_ANGLE}
+  data-visible-spokes={VISIBLE_SPOKES}
+  data-radius={WHEEL_RADIUS}
+>
+  {Array.from({ length: VISIBLE_SPOKES }, (_, i) => {
+    const angle = (i - Math.floor(VISIBLE_SPOKES / 2)) * SPOKE_ANGLE;
+    const problem = problems[((i % problems.length) + problems.length) % problems.length];
+    return (
+      <div
+        class:list={['spoke', { active: i === Math.floor(VISIBLE_SPOKES / 2) }]}
+        data-index={i}
+        style={`transform: rotate(${angle}deg) translateX(${WHEEL_RADIUS}px);`}
+      >
+        {problem.label}
+      </div>
+    );
+  })}
+  <div class="wheel-label">please,<br/>pick a problem</div>
+</div>
+
+<div class="mobile-list" id="mobile-list">
+  {problems.map((p) => (
+    <div class="mobile-item" data-slug={p.slug} data-colors={JSON.stringify(p.colors)}>
+      <div class="mobile-item-label">{p.label}</div>
+      <div class="mobile-item-content"></div>
+    </div>
+  ))}
+</div>
+
+<style>
+  @import '../styles/wheel.css';
+</style>
+
+<script>
+  import '../scripts/wheel';
+</script>

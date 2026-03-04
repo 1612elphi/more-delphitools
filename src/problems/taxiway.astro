@@ -1,0 +1,216 @@
+<div class="taxi-takeover">
+  <div class="blueprint-bg"></div>
+  <div class="crop-tl"></div>
+  <div class="crop-br"></div>
+  <div class="inner">
+    <div class="solari-board" id="taxi-solari"></div>
+    <p class="tagline">Your PDFs, cleared for takeoff.</p>
+    <p class="sub">The PDF inspector your print shop wishes you had.<br>55 checks. 14 fixes. Native macOS. Free forever.</p>
+    <a class="link" href="/projects/taxiway/">full page &rarr;</a>
+    <div class="lights">
+      <span class="light green"></span>
+      <span class="light amber"></span>
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+  // Solari flip animation — extracted from Taxiway
+  (function() {
+    const board = document.getElementById('taxi-solari');
+    if (!board || board.children.length > 0) return;
+    const word = 'TAXIWAY';
+    const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
+    word.split('').forEach((target, i) => {
+      const card = document.createElement('div');
+      card.className = 'solari-char';
+
+      const top = document.createElement('div');
+      top.className = 'solari-half top';
+      const topL = document.createElement('span');
+      topL.className = 'solari-letter';
+      topL.textContent = ' ';
+      top.appendChild(topL);
+
+      const bot = document.createElement('div');
+      bot.className = 'solari-half bot';
+      const botL = document.createElement('span');
+      botL.className = 'solari-letter';
+      botL.textContent = ' ';
+      bot.appendChild(botL);
+
+      card.appendChild(top);
+      card.appendChild(bot);
+      board.appendChild(card);
+
+      const rolls = 5 + Math.floor(Math.random() * 5);
+      let count = 0;
+
+      setTimeout(() => {
+        const tick = () => {
+          const ch = count < rolls ? alphabet[Math.floor(Math.random() * 26)] : target;
+          topL.textContent = ch;
+          botL.textContent = ch;
+          top.style.transition = 'transform 0.06s ease-in';
+          top.style.transformOrigin = 'bottom';
+          top.style.transform = 'perspective(400px) rotateX(-8deg)';
+          setTimeout(() => {
+            top.style.transition = 'transform 0.06s ease-out';
+            top.style.transform = 'perspective(400px) rotateX(0deg)';
+          }, 60);
+          count++;
+          if (count <= rolls) setTimeout(tick, 55 + count * 6);
+        };
+        tick();
+      }, 200 + i * 140);
+    });
+  })();
+</script>
+
+<style is:inline>
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap');
+
+  .taxi-takeover {
+    max-width: 520px;
+    width: 100%;
+    position: relative;
+    padding: 2rem 1.5rem;
+    overflow: hidden;
+  }
+
+  /* blueprint grid */
+  .blueprint-bg {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+      linear-gradient(rgba(91,143,168,0.12) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(91,143,168,0.12) 1px, transparent 1px);
+    background-size: 80px 80px;
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 30%, black 0%, transparent 100%);
+    -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 30%, black 0%, transparent 100%);
+  }
+
+  /* crop marks */
+  .crop-tl, .crop-br {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    border-color: rgba(232,220,200,0.15);
+    border-style: solid;
+  }
+  .crop-tl { top: 8px; left: 8px; border-width: 1px 0 0 1px; }
+  .crop-br { bottom: 8px; right: 8px; border-width: 0 1px 1px 0; }
+
+  .inner {
+    position: relative;
+    text-align: center;
+  }
+
+  /* ═══ SOLARI BOARD (from Taxiway) ═══ */
+  .solari-board {
+    display: inline-flex;
+    gap: 8px;
+    padding: 12px 16px;
+    background: #161513;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.03);
+    margin-bottom: 2.5rem;
+  }
+  .solari-board .solari-char {
+    width: clamp(40px, 7vw, 60px);
+    height: clamp(56px, 9.5vw, 84px);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .solari-board .solari-half {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .solari-board .solari-half.top {
+    border-radius: 6px 6px 2px 2px;
+    background: linear-gradient(180deg, #2a2825 0%, #252420 100%);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.06), 0 1px 0 rgba(0,0,0,0.9);
+  }
+  .solari-board .solari-half.bot {
+    border-radius: 2px 2px 6px 6px;
+    background: linear-gradient(180deg, #222120 0%, #1f1e1b 100%);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.02);
+  }
+  .solari-board .solari-letter {
+    font-family: 'JetBrains Mono', 'SF Mono', monospace;
+    font-weight: 700;
+    font-size: clamp(1.6rem, 4.5vw, 2.8rem);
+    color: #d4952a;
+    text-shadow: 0 0 18px rgba(212,149,42,0.12);
+    position: absolute;
+    left: 50%;
+    user-select: none;
+  }
+  .solari-board .solari-half.top .solari-letter {
+    top: 100%;
+    transform: translate(-50%, -50%);
+  }
+  .solari-board .solari-half.bot .solari-letter {
+    top: 0%;
+    transform: translate(-50%, -50%);
+  }
+
+  .tagline {
+    font-family: 'Instrument Serif', Georgia, serif;
+    font-size: clamp(1.6rem, 4.5vw, 2.8rem);
+    font-style: italic;
+    color: #e8dcc8;
+    margin-bottom: 0.6rem;
+    line-height: 1.15;
+  }
+  .sub {
+    font-family: 'JetBrains Mono', 'SF Mono', monospace;
+    font-size: 0.78rem;
+    font-weight: 300;
+    color: rgba(232,220,200,0.6);
+    line-height: 1.5;
+    margin-bottom: 2rem;
+  }
+  .link {
+    font-family: 'JetBrains Mono', 'SF Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    color: #d4952a;
+    text-decoration: none;
+    opacity: 0.6;
+    transition: opacity 200ms;
+  }
+  .link:hover { opacity: 1; }
+
+  .lights {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 2.5rem;
+  }
+  .light {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+  }
+  .light.green {
+    background: #3ddc84;
+    animation: blink 1.4s ease-in-out infinite;
+  }
+  .light.amber {
+    background: #d4952a;
+    animation: blink 1.4s ease-in-out infinite 0.7s;
+  }
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.12; }
+  }
+</style>

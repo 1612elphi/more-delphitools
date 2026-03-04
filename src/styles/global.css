@@ -1,0 +1,38 @@
+@font-face {
+  font-family: 'iA Writer Quattro';
+  src: url('/fonts/iAWriterQuattroS-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'iA Writer Quattro';
+  src: url('/fonts/iAWriterQuattroS-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-display: swap;
+}
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+  font-family: 'iA Writer Quattro', 'IBM Plex Sans', system-ui, sans-serif;
+}
+
+body {
+  background: var(--bg-color, #1a1a2e);
+  color: var(--text-color, #e0e0e0);
+  transition: background 500ms ease, color 500ms ease;
+}
+
+@media (max-width: 768px) {
+  body {
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+}

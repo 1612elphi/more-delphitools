@@ -1,0 +1,129 @@
+<div class="exh-takeover">
+  <div class="exh-term">
+    <div class="exh-titlebar">
+      <span class="exh-dot red"></span>
+      <span class="exh-dot yellow"></span>
+      <span class="exh-dot green"></span>
+      <span class="exh-titletext">exhentai-downloader</span>
+    </div>
+    <div class="exh-body" id="exh-tui">
+      <div class="exh-line"><span class="exh-prompt">$</span> exhentai-dl --format pdf</div>
+      <div class="exh-line dim">Authenticating...</div>
+      <div class="exh-line ok">Connected.</div>
+      <div class="exh-line dim">Fetching gallery metadata...</div>
+      <div class="exh-line">Found <span class="exh-hl">247</span> pages</div>
+      <div class="exh-progress"><div class="exh-bar" id="exh-bar"></div></div>
+      <div class="exh-line ok">PDF assembled. Enjoy your reading.</div>
+    </div>
+  </div>
+  <h1 class="exh-title">exhentai-downloader</h1>
+  <p class="exh-sub">We'll let you figure out what this one does.</p>
+  <a class="exh-button" href="https://github.com/1612elphi/exhentai-downloader">view on github</a>
+</div>
+
+<script is:inline>
+(function() {
+  var bar = document.getElementById('exh-bar');
+  if (!bar || bar.dataset.running) return;
+  bar.dataset.running = '1';
+  var w = 0;
+  function fill() {
+    w += 1 + Math.random() * 4;
+    if (w > 100) w = 0;
+    bar.style.width = Math.min(w, 100) + '%';
+    setTimeout(fill, 60 + Math.random() * 80);
+  }
+  setTimeout(fill, 400);
+})();
+</script>
+
+<style is:inline>
+  .exh-takeover {
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+  }
+  .exh-term {
+    background: #0c0c0c;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 2rem;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+    text-align: left;
+  }
+  .exh-titlebar {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 0.6rem 0.8rem;
+    background: #1a1a1a;
+  }
+  .exh-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+  }
+  .exh-dot.red { background: #ff5f57; }
+  .exh-dot.yellow { background: #febc2e; }
+  .exh-dot.green { background: #28c840; }
+  .exh-titletext {
+    flex: 1;
+    text-align: center;
+    font-family: 'IBM Plex Mono', 'SF Mono', monospace;
+    font-size: 0.55rem;
+    color: rgba(255,255,255,0.3);
+    margin-right: 2rem;
+  }
+  .exh-body {
+    padding: 1rem;
+    font-family: 'IBM Plex Mono', 'SF Mono', monospace;
+    font-size: 0.7rem;
+    line-height: 1.8;
+  }
+  .exh-line { color: rgba(255,255,255,0.6); }
+  .exh-line.dim { color: rgba(255,255,255,0.25); }
+  .exh-line.ok { color: #28c840; }
+  .exh-prompt { color: #f87171; margin-right: 0.5rem; }
+  .exh-hl { color: #f87171; font-weight: 600; }
+  .exh-progress {
+    height: 4px;
+    background: #222;
+    border-radius: 2px;
+    margin: 0.4rem 0;
+    overflow: hidden;
+  }
+  .exh-bar {
+    height: 100%;
+    width: 0%;
+    background: #f87171;
+    border-radius: 2px;
+    transition: width 60ms linear;
+  }
+  .exh-title {
+    font-family: 'IBM Plex Mono', 'SF Mono', monospace;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 0.4rem;
+  }
+  .exh-sub {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.35);
+    margin-bottom: 1.5rem;
+  }
+  .exh-button {
+    display: inline-block;
+    font-family: 'IBM Plex Mono', 'SF Mono', monospace;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: #0c0c0c;
+    background: #f87171;
+    text-decoration: none;
+    padding: 0.7rem 2rem;
+    border-radius: 4px;
+    transition: background 200ms, transform 100ms;
+  }
+  .exh-button:hover { background: #fca5a5; transform: translateY(-1px); }
+  .exh-button:active { transform: translateY(0); }
+</style>

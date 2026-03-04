@@ -1,0 +1,151 @@
+<div class="camera-takeover">
+  <div class="edge"></div>
+  <div class="content">
+    <p class="model">pqc-1</p>
+    <h2>Cassini Camera</h2>
+    <p class="tagline">palette-quantized photography.</p>
+    <div class="groove"></div>
+    <p class="desc">point the camera and every frame is reduced to 12 colours in real time by a Metal GPU shader. no filters. no editing. the palette is the only creative decision.</p>
+    <div class="spec-grid">
+      <div class="spec">
+        <span class="val">12</span>
+        <span class="unit">colours / frame</span>
+      </div>
+      <div class="spec">
+        <span class="val">16</span>
+        <span class="unit">palettes</span>
+      </div>
+      <div class="spec">
+        <span class="val">30</span>
+        <span class="unit">fps quantise</span>
+      </div>
+      <div class="spec">
+        <span class="val">4&times;</span>
+        <span class="unit">nearest-neighbour</span>
+      </div>
+    </div>
+    <div class="palette-row">
+      <div class="swatch" style="background:#2a2a2f"></div>
+      <div class="swatch" style="background:#5a7040"></div>
+      <div class="swatch" style="background:#a63a28"></div>
+      <div class="swatch" style="background:#c8c4bc"></div>
+      <div class="swatch" style="background:#e8e4dc"></div>
+      <div class="swatch" style="background:#8a8780"></div>
+      <div class="swatch" style="background:#d4952a"></div>
+      <div class="swatch" style="background:#55524d"></div>
+    </div>
+    <a class="link" href="/projects/cassini-camera/">full page &rarr;</a>
+  </div>
+  <div class="edge"></div>
+</div>
+
+<style is:inline>
+  .camera-takeover {
+    max-width: 480px;
+    width: 100%;
+    font-family: 'Newsreader', Georgia, serif;
+    color: #2a2a2f;
+    background: #e8e4dc;
+    background-image:
+      repeating-linear-gradient(90deg, transparent, rgba(0,0,0,0.015) 1px, transparent 2px);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .edge {
+    height: 3px;
+    background: linear-gradient(90deg, #b8b4ac, #ccc8c0, #d8d4cc, #e0dcd4, #d8d4cc, #ccc8c0, #b8b4ac);
+  }
+  .content {
+    padding: 2.5rem 2rem;
+    text-align: center;
+  }
+  .model {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: #8a8780;
+    margin-bottom: 0.5rem;
+  }
+  h2 {
+    font-family: 'Instrument Serif', Georgia, serif;
+    font-size: clamp(2.2rem, 6vw, 3.2rem);
+    font-weight: 400;
+    font-style: italic;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin-bottom: 0.5rem;
+    color: #2a2a2f;
+  }
+  .tagline {
+    font-size: 1.1rem;
+    font-style: italic;
+    color: #55524d;
+    margin-bottom: 1.5rem;
+  }
+  .groove {
+    height: 1px;
+    background: rgba(0,0,0,0.1);
+    box-shadow: 0 1px 0 rgba(255,255,255,0.5);
+    margin: 0 auto 1.5rem;
+    max-width: 320px;
+  }
+  .desc {
+    font-size: 0.95rem;
+    line-height: 1.65;
+    color: #55524d;
+    margin-bottom: 2rem;
+  }
+  .spec-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: rgba(0,0,0,0.08);
+    border: 1px solid rgba(0,0,0,0.08);
+    margin-bottom: 2rem;
+  }
+  .spec {
+    background: #e8e4dc;
+    padding: 1rem 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.2rem;
+  }
+  .val {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #a63a28;
+  }
+  .unit {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #8a8780;
+  }
+  .palette-row {
+    display: flex;
+    gap: 3px;
+    justify-content: center;
+    margin-bottom: 2rem;
+  }
+  .swatch {
+    width: 100%;
+    max-width: 40px;
+    height: 12px;
+    border-radius: 1px;
+    border: 1px solid rgba(0,0,0,0.06);
+  }
+  .link {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    color: #a63a28;
+    text-decoration: none;
+    opacity: 0.6;
+    transition: opacity 200ms;
+  }
+  .link:hover { opacity: 1; }
+</style>

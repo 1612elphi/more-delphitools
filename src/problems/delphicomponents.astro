@@ -1,0 +1,149 @@
+<div class="dc-takeover">
+  <div class="dc-grid" id="dc-grid">
+    <div class="dc-comp"><div class="dc-ring" id="dc-ring"><svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="15.5" fill="none" stroke="rgba(100,255,218,0.1)" stroke-width="3"/><circle cx="18" cy="18" r="15.5" fill="none" stroke="#64ffda" stroke-width="3" stroke-dasharray="73 100" stroke-linecap="round" transform="rotate(-90 18 18)"/></svg></div><span class="dc-name">Progress Ring</span></div>
+    <div class="dc-comp"><div class="dc-toggle"><div class="dc-knob"></div></div><span class="dc-name">Toggle</span></div>
+    <div class="dc-comp"><div class="dc-skeleton"><div class="dc-shimmer"></div></div><span class="dc-name">Skeleton</span></div>
+    <div class="dc-comp"><div class="dc-badge">3</div><span class="dc-name">Badge</span></div>
+    <div class="dc-comp"><div class="dc-tooltip">Hover me<div class="dc-tip">Hello!</div></div><span class="dc-name">Tooltip</span></div>
+    <div class="dc-comp"><div class="dc-spinner"></div><span class="dc-name">Spinner</span></div>
+  </div>
+  <h1 class="dc-title">delphicomponents</h1>
+  <p class="dc-sub">Small React components. Copy, paste, ship.</p>
+  <a class="dc-button" href="https://github.com/1612elphi/delphicomponents">view on github</a>
+</div>
+
+<style is:inline>
+  .dc-takeover {
+    max-width: 380px;
+    width: 100%;
+    text-align: center;
+  }
+  .dc-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+    margin-bottom: 2rem;
+  }
+  .dc-comp {
+    background: rgba(100,255,218,0.03);
+    border: 1px solid rgba(100,255,218,0.08);
+    border-radius: 8px;
+    padding: 1.2rem 0.5rem 0.8rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  .dc-name {
+    font-family: 'IBM Plex Mono', 'SF Mono', monospace;
+    font-size: 0.5rem;
+    letter-spacing: 0.05em;
+    color: rgba(255,255,255,0.25);
+  }
+  .dc-ring { width: 32px; height: 32px; }
+  .dc-ring svg { width: 100%; height: 100%; }
+  .dc-toggle {
+    width: 36px;
+    height: 20px;
+    background: #64ffda;
+    border-radius: 10px;
+    padding: 2px;
+    display: flex;
+    justify-content: flex-end;
+  }
+  .dc-knob {
+    width: 16px;
+    height: 16px;
+    background: #0a192f;
+    border-radius: 50%;
+  }
+  .dc-skeleton {
+    width: 36px;
+    height: 8px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+  }
+  .dc-shimmer {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.08) 50%, transparent 100%);
+    animation: dc-shim 1.5s ease-in-out infinite;
+  }
+  @keyframes dc-shim {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+  }
+  .dc-badge {
+    font-family: 'IBM Plex Mono', 'SF Mono', monospace;
+    font-size: 0.6rem;
+    font-weight: 700;
+    color: #0a192f;
+    background: #64ffda;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .dc-tooltip {
+    font-size: 0.55rem;
+    color: rgba(255,255,255,0.4);
+    position: relative;
+    cursor: default;
+  }
+  .dc-tip {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #64ffda;
+    color: #0a192f;
+    font-size: 0.5rem;
+    font-weight: 600;
+    padding: 0.15rem 0.4rem;
+    border-radius: 3px;
+    white-space: nowrap;
+    margin-bottom: 4px;
+  }
+  .dc-spinner {
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba(100,255,218,0.15);
+    border-top-color: #64ffda;
+    border-radius: 50%;
+    animation: dc-spin 0.8s linear infinite;
+  }
+  @keyframes dc-spin {
+    to { transform: rotate(360deg); }
+  }
+  .dc-title {
+    font-family: 'IBM Plex Mono', 'SF Mono', monospace;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 0.4rem;
+  }
+  .dc-sub {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.35);
+    margin-bottom: 1.5rem;
+  }
+  .dc-button {
+    display: inline-block;
+    font-family: 'IBM Plex Mono', 'SF Mono', monospace;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: #0a192f;
+    background: #64ffda;
+    text-decoration: none;
+    padding: 0.7rem 2rem;
+    border-radius: 4px;
+    transition: background 200ms, transform 100ms;
+  }
+  .dc-button:hover { background: #8affea; transform: translateY(-1px); }
+  .dc-button:active { transform: translateY(0); }
+</style>

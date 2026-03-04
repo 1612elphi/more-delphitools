@@ -1,0 +1,111 @@
+<div class="ml-takeover">
+  <div class="ml-board">
+    <div class="ml-grid">
+      <span class="ml-day">Mon</span><span class="ml-day">Tue</span><span class="ml-day">Wed</span><span class="ml-day">Thu</span><span class="ml-day">Fri</span>
+    </div>
+    <div class="ml-chips">
+      <div class="ml-chip" style="--dot: #e53935; --rot: -2deg; --x: 8%; --y: 18%;">Instagram Reel</div>
+      <div class="ml-chip" style="--dot: #ff9800; --rot: 1.5deg; --x: 38%; --y: 12%;">Blog Post Draft</div>
+      <div class="ml-chip" style="--dot: #fbbf24; --rot: -0.5deg; --x: 62%; --y: 22%;">Newsletter</div>
+      <div class="ml-chip" style="--dot: #4caf50; --rot: 2deg; --x: 12%; --y: 48%;">Product Photos</div>
+      <div class="ml-chip" style="--dot: #2196f3; --rot: -1deg; --x: 44%; --y: 44%;">TikTok</div>
+      <div class="ml-chip" style="--dot: #3f51b5; --rot: 0.8deg; --x: 68%; --y: 52%;">Portfolio Update</div>
+      <div class="ml-chip" style="--dot: #9c27b0; --rot: -1.5deg; --x: 22%; --y: 72%;">Story Batch</div>
+      <div class="ml-chip" style="--dot: #e53935; --rot: 1deg; --x: 52%; --y: 76%;">Campaign Launch</div>
+    </div>
+  </div>
+  <h1 class="ml-title">More Later</h1>
+  <p class="ml-sub">Your whiteboard calendar, but it fits in your bag.</p>
+  <a class="ml-button" href="https://github.com/1612elphi/morelater">view on github</a>
+</div>
+
+<style is:inline>
+  .ml-takeover {
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+  }
+  .ml-board {
+    background: #ffffff;
+    border-radius: 6px;
+    padding: 1rem 1rem 0;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 5/4;
+  }
+  .ml-grid {
+    display: flex;
+    justify-content: space-around;
+    border-bottom: 1px solid #e8e5e0;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+  .ml-day {
+    font-family: 'IBM Plex Mono', 'SF Mono', monospace;
+    font-size: 0.5rem;
+    font-weight: 600;
+    color: #bbb;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  .ml-chips {
+    position: relative;
+    width: 100%;
+    height: calc(100% - 2rem);
+  }
+  .ml-chip {
+    position: absolute;
+    left: var(--x);
+    top: var(--y);
+    transform: rotate(var(--rot));
+    background: #fafaf8;
+    border: 1px solid #e8e5e0;
+    border-radius: 20px;
+    padding: 0.3rem 0.7rem 0.3rem 0.5rem;
+    font-size: 0.55rem;
+    font-weight: 600;
+    color: #333;
+    white-space: nowrap;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+  .ml-chip::before {
+    content: '';
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--dot);
+    flex-shrink: 0;
+  }
+  .ml-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 0.4rem;
+  }
+  .ml-sub {
+    font-size: 0.85rem;
+    color: #1a1a1a;
+    opacity: 0.35;
+    margin-bottom: 1.5rem;
+  }
+  .ml-button {
+    display: inline-block;
+    font-family: 'IBM Plex Mono', 'SF Mono', monospace;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: #ffffff;
+    background: #e53935;
+    text-decoration: none;
+    padding: 0.7rem 2rem;
+    border-radius: 4px;
+    transition: background 200ms, transform 100ms;
+  }
+  .ml-button:hover { background: #ef5350; transform: translateY(-1px); }
+  .ml-button:active { transform: translateY(0); }
+</style>
