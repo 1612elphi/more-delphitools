@@ -3,6 +3,8 @@ import { defineConfig } from 'astro/config';
 import fs from 'node:fs';
 import path from 'node:path';
 
+import cloudflare from '@astrojs/cloudflare';
+
 // https://astro.build/config
 export default defineConfig({
   vite: {
@@ -23,4 +25,6 @@ export default defineConfig({
       },
     ],
   },
+
+  adapter: cloudflare(),
 });
