@@ -108,6 +108,9 @@ export const problems: Problem[] = [
   { slug: 'siding', label: "i'm autistic", project: 'siding', colors: palette.siding },
   { slug: 'siding', label: 'i like to train spot', project: 'siding', colors: palette.siding },
 
+  // --- EMOTIONAL SUPPORT ---
+  { slug: 'dad-doesnt-love-me', label: "my dad doesn't love me", project: 'emotional support', colors: palette.bespoke },
+
   // --- TAXIWAY ---
   { slug: 'taxiway', label: 'i refuse to give adobe more money', project: 'taxiway', colors: palette.taxiway },
   { slug: 'taxiway', label: 'enfocus can **** ** **** ******** ***', project: 'taxiway', colors: palette.taxiway },
