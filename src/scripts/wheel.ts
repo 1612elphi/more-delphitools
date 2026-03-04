@@ -130,6 +130,14 @@ function snapToNearest() {
   ensureAnimating();
 }
 
+function snapToSlot(slot: number) {
+  if (takeoverActive) dismissTakeover();
+  cancelDwell();
+  targetSnap = -slot * spokeAngle;
+  velocity = 0;
+  ensureAnimating();
+}
+
 // Dwell
 function startDwell() {
   cancelDwell();
@@ -264,6 +272,26 @@ if (!isMobile) {
   document.addEventListener('touchmove', (e: TouchEvent) => {
     if (dragging) e.preventDefault();
   }, { passive: false });
+
+  // Click on a spoke to scroll it to center
+  spokes.forEach((spoke, i) => {
+    spoke.style.cursor = 'pointer';
+    spoke.addEventListener('click', () => {
+      snapToSlot(spokeSlot[i]);
+    });
+  });
+
+  // Arrow keys
+  document.addEventListener('keydown', (e: KeyboardEvent) => {
+    if (e.key === 'ArrowUp' || e.key === 'ArrowDown') {
+      e.preventDefault();
+      if (takeoverActive) dismissTakeover();
+      cancelDwell();
+      const currentSlot = Math.round(virtualCenter());
+      const nextSlot = e.key === 'ArrowUp' ? currentSlot + 1 : currentSlot - 1;
+      snapToSlot(nextSlot);
+    }
+  });
 
   // Initial render + start first dwell
   render();
