@@ -1,0 +1,22 @@
+---
+interface Props {
+  response: string;
+}
+const { response } = Astro.props;
+---
+
+<div class="es-takeover">
+  <p class="es-response">{response}</p>
+</div>
+
+<style is:inline>
+  .es-takeover {
+    text-align: center;
+  }
+  .es-response {
+    font-size: 1.8rem;
+    font-weight: 700;
+    opacity: 0.6;
+    font-style: italic;
+  }
+</style>
