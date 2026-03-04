@@ -356,9 +356,4 @@ if (mobileList && window.matchMedia('(max-width: 768px)').matches) {
   });
 
   mobileDetailBack.addEventListener('click', closeDetail);
-
-  // Open bespoke by default
-  const firstSlug = allItems[0].dataset.slug!;
-  const firstColors = JSON.parse(allItems[0].dataset.colors!);
-  openDetail(firstSlug, firstColors);
 }

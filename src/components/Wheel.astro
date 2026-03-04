@@ -34,6 +34,10 @@ const WHEEL_RADIUS = 700;
 </div>
 
 <div class="mobile-list" id="mobile-list">
+  <div class="mobile-header">
+    <p class="mobile-welcome">welcome to delphi's tools.</p>
+    <p class="mobile-prompt">please, pick a problem</p>
+  </div>
   {problems.map((p) => (
     <div class="mobile-item" data-slug={p.slug} data-colors={JSON.stringify(p.colors)}>
       {p.label}

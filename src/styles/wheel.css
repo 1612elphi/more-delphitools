@@ -79,6 +79,24 @@
     min-height: 100dvh;
     padding: 1rem;
   }
+  .mobile-header {
+    padding: 3rem 0.5rem 2rem;
+  }
+  .mobile-welcome {
+    font-size: 0.9rem;
+    opacity: 0.3;
+    letter-spacing: 0.1em;
+    text-transform: lowercase;
+    margin-bottom: 0.5rem;
+  }
+  .mobile-prompt {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    font-style: italic;
+    font-size: 1.8rem;
+    font-weight: 400;
+    opacity: 0.5;
+    line-height: 1.2;
+  }
   .mobile-item {
     padding: 1rem 0.5rem;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
