@@ -62,45 +62,85 @@
   opacity: 0.08;
 }
 
-.mobile-list {
+.mobile-list,
+.mobile-detail {
   display: none;
 }
 
 @media (max-width: 768px) {
   .wheel { display: none; }
+  .wheel-label { display: none; }
+
   .mobile-list {
     display: flex;
     flex-direction: column;
     width: 100%;
     min-height: 100vh;
+    min-height: 100dvh;
     padding: 1rem;
   }
   .mobile-item {
+    padding: 1rem 0.5rem;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    overflow: hidden;
-  }
-  .mobile-item-label {
-    padding: 1.25rem 0.5rem;
     font-size: 1.1rem;
     font-weight: 600;
     text-transform: lowercase;
     opacity: 0.5;
     cursor: pointer;
-    transition: opacity 200ms, color 200ms;
+    transition: opacity 200ms;
+    -webkit-tap-highlight-color: transparent;
   }
-  .mobile-item.open .mobile-item-label {
-    opacity: 1;
-    color: var(--accent-color, var(--text-color, #e0e0e0));
+  .mobile-item:active {
+    opacity: 0.8;
   }
-  .mobile-item-content {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 400ms ease, padding 400ms ease;
-    padding: 0 0.5rem;
-  }
-  .mobile-item.open .mobile-item-content {
-    max-height: 80vh;
-    padding: 1rem 0.5rem 2rem;
+
+  .mobile-detail {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    background: var(--bg-color, #1a1a2e);
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1.5rem;
+    transition: background-color 400ms ease;
+  }
+  .mobile-detail.open {
+    display: flex;
+  }
+
+  .mobile-detail-back {
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    z-index: 101;
+    background: none;
+    border: none;
+    color: var(--text-color, #e0e0e0);
+    font-size: 1.5rem;
+    opacity: 0.5;
+    cursor: pointer;
+    padding: 0.5rem;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .mobile-detail-content {
+    width: 100%;
+    max-width: 560px;
+    animation: mobileSlideIn 300ms ease both;
+  }
+
+  @keyframes mobileSlideIn {
+    from {
+      opacity: 0;
+      transform: translateX(40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
   }
 }

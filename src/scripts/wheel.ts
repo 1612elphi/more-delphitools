@@ -273,6 +273,11 @@ if (!isMobile) {
 // Mobile handling
 const mobileList = document.getElementById('mobile-list');
 if (mobileList && window.matchMedia('(max-width: 768px)').matches) {
+  const mobileDetail = document.getElementById('mobile-detail')!;
+  const mobileDetailContent = document.getElementById('mobile-detail-content')!;
+  const mobileDetailBack = document.getElementById('mobile-detail-back')!;
+  const contentCache = new Map<string, string>();
+
   // Shuffle mobile items (keep first in place)
   const allItems = Array.from(mobileList.querySelectorAll<HTMLElement>('.mobile-item'));
   const [firstItem, ...restItems] = allItems;
@@ -282,34 +287,13 @@ if (mobileList && window.matchMedia('(max-width: 768px)').matches) {
   }
   [firstItem, ...restItems].forEach(item => mobileList.appendChild(item));
 
-  const contentCache = new Map<string, string>();
-  let openItem: HTMLElement | null = null;
-
-  function closeItem(item: HTMLElement) {
-    item.classList.remove('open');
-    // Reset colors
-    document.body.style.setProperty('--bg-color', '#1a1a2e');
-    document.body.style.setProperty('--text-color', '#e0e0e0');
-    document.body.style.removeProperty('--accent-color');
-    document.querySelectorAll('style[data-takeover]').forEach(s => s.remove());
-    document.querySelectorAll('script[data-takeover]').forEach(s => s.remove());
-    openItem = null;
-  }
-
-  async function openItemEl(item: HTMLElement) {
-    const slug = item.dataset.slug!;
-    const colors = JSON.parse(item.dataset.colors!);
-    const contentEl = item.querySelector<HTMLElement>('.mobile-item-content')!;
-
-    // Set colors
+  async function openDetail(slug: string, colors: { bg: string; text: string; accent: string }) {
     document.body.style.setProperty('--bg-color', colors.bg);
     document.body.style.setProperty('--text-color', colors.text);
     document.body.style.setProperty('--accent-color', colors.accent);
-
-    // Remove old takeover styles
     document.querySelectorAll('style[data-takeover]').forEach(s => s.remove());
+    document.querySelectorAll('script[data-takeover]').forEach(s => s.remove());
 
-    // Fetch content if not cached
     if (!contentCache.has(slug)) {
       try {
         const res = await fetch(`/problems/${slug}/`);
@@ -318,7 +302,6 @@ if (mobileList && window.matchMedia('(max-width: 768px)').matches) {
         const doc = parser.parseFromString(html, 'text/html');
         const detail = doc.querySelector('.problem-detail');
         contentCache.set(slug, detail ? detail.outerHTML : `<p>${slug}</p>`);
-        // Cache styles and scripts too
         const styles: string[] = [];
         doc.querySelectorAll('style').forEach(style => styles.push(style.textContent || ''));
         contentCache.set(slug + '__styles', styles.join('\n'));
@@ -330,12 +313,12 @@ if (mobileList && window.matchMedia('(max-width: 768px)').matches) {
       } catch {
         contentCache.set(slug, `<p>Could not load ${slug}</p>`);
         contentCache.set(slug + '__styles', '');
+        contentCache.set(slug + '__scripts', '');
       }
     }
 
-    contentEl.innerHTML = contentCache.get(slug)!;
+    mobileDetailContent.innerHTML = contentCache.get(slug)!;
 
-    // Inject styles
     const styleText = contentCache.get(slug + '__styles');
     if (styleText) {
       const s = document.createElement('style');
@@ -343,8 +326,6 @@ if (mobileList && window.matchMedia('(max-width: 768px)').matches) {
       s.setAttribute('data-takeover', slug);
       document.head.appendChild(s);
     }
-
-    // Execute scripts
     const scriptText = contentCache.get(slug + '__scripts');
     if (scriptText) {
       const s = document.createElement('script');
@@ -353,19 +334,31 @@ if (mobileList && window.matchMedia('(max-width: 768px)').matches) {
       document.body.appendChild(s);
     }
 
-    item.classList.add('open');
-    openItem = item;
+    mobileDetail.classList.add('open');
   }
 
-  mobileList.querySelectorAll<HTMLElement>('.mobile-item-label').forEach(label => {
-    label.addEventListener('click', () => {
-      const item = label.parentElement as HTMLElement;
-      if (item === openItem) {
-        closeItem(item);
-      } else {
-        if (openItem) closeItem(openItem);
-        openItemEl(item);
-      }
+  function closeDetail() {
+    mobileDetail.classList.remove('open');
+    document.body.style.setProperty('--bg-color', '#1a1a2e');
+    document.body.style.setProperty('--text-color', '#e0e0e0');
+    document.body.style.removeProperty('--accent-color');
+    document.querySelectorAll('style[data-takeover]').forEach(s => s.remove());
+    document.querySelectorAll('script[data-takeover]').forEach(s => s.remove());
+    mobileDetailContent.innerHTML = '';
+  }
+
+  allItems.forEach(item => {
+    item.addEventListener('click', () => {
+      const slug = item.dataset.slug!;
+      const colors = JSON.parse(item.dataset.colors!);
+      openDetail(slug, colors);
     });
   });
+
+  mobileDetailBack.addEventListener('click', closeDetail);
+
+  // Open bespoke by default
+  const firstSlug = allItems[0].dataset.slug!;
+  const firstColors = JSON.parse(allItems[0].dataset.colors!);
+  openDetail(firstSlug, firstColors);
 }

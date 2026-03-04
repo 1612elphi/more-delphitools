@@ -20,13 +20,24 @@ import { problems } from '../data/problems';
     width: 100vw;
     overflow: hidden;
   }
+
+  @media (max-width: 768px) {
+    .viewport {
+      overflow: visible;
+    }
+  }
   .wheel-zone {
     width: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
-    touch-action: none;
+  }
+
+  @media (min-width: 769px) {
+    .wheel-zone {
+      touch-action: none;
+    }
   }
 
   @media (max-width: 768px) {

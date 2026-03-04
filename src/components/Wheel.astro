@@ -36,10 +36,13 @@ const WHEEL_RADIUS = 700;
 <div class="mobile-list" id="mobile-list">
   {problems.map((p) => (
     <div class="mobile-item" data-slug={p.slug} data-colors={JSON.stringify(p.colors)}>
-      <div class="mobile-item-label">{p.label}</div>
-      <div class="mobile-item-content"></div>
+      {p.label}
     </div>
   ))}
+</div>
+<div class="mobile-detail" id="mobile-detail">
+  <button class="mobile-detail-back" id="mobile-detail-back">&larr;</button>
+  <div class="mobile-detail-content" id="mobile-detail-content"></div>
 </div>
 
 <style>
