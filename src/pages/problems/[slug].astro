@@ -1,6 +1,7 @@
 ---
 import { problems } from '../../data/problems';
 import DelphitoolsCard from '../../problems/delphitools-card.astro';
+import EmotionalSupport from '../../problems/emotional-support.astro';
 import ComingSoon from '../../problems/coming-soon.astro';
 
 export function getStaticPaths() {
@@ -32,6 +33,16 @@ const dtTools: Record<string, { name: string; path: string; tagline: string }> =
 };
 const dtTool = dtTools[slug];
 
+// Emotional support slug → response mapping
+const esResponses: Record<string, string> = {
+  'dad-doesnt-love-me':    "that's rough, buddy.",
+  'squirrel-recognises-me': "he's just in it for your sandwich crusts.",
+  'putting-off-laundry':   "we both know it's been three.",
+  'spider-in-bathroom':    'skill issue.',
+  'burnt-toast-again':     'at some point this is a pattern.',
+};
+const esResponse = esResponses[slug];
+
 // Try to load problem-specific content
 let ProblemContent: any = null;
 const allProblems = import.meta.glob('../../problems/*.astro', { eager: true });
@@ -44,6 +55,8 @@ if (key) {
 <div class="problem-detail" data-project={problem.project} style={`--accent: ${problem.colors.accent};`}>
   {dtTool ? (
     <DelphitoolsCard toolName={dtTool.name} toolPath={dtTool.path} tagline={dtTool.tagline} problem={problem.label} />
+  ) : esResponse ? (
+    <EmotionalSupport response={esResponse} />
   ) : ProblemContent ? <ProblemContent /> : (
     <ComingSoon project={problem.project} />
   )}

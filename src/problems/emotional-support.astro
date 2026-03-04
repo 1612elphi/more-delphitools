@@ -1,5 +1,12 @@
+---
+interface Props {
+  response: string;
+}
+const { response } = Astro.props;
+---
+
 <div class="es-takeover">
-  <p class="es-response">that's rough, buddy.</p>
+  <p class="es-response">{response}</p>
 </div>
 
 <style is:inline>
