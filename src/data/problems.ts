@@ -91,7 +91,7 @@ export const problems: Problem[] = [
   { slug: 'pictoclash', label: "i'm still waiting for art fight to load", project: 'pictoclash', colors: palette.pictoclash },
 
   // --- PIGS ---
-  { slug: 'pigs', label: 'all calculator suck forever and always except this one haha anyways nimbasa city: partly clou', project: 'pigs', colors: palette.pigs },
+  { slug: 'pigs', label: 'all calculators suck forever and always except this one haha anyways nimbasa city: partly clou', project: 'pigs', colors: palette.pigs },
   { slug: 'pigs', label: 'have you seen my calculator', project: 'pigs', colors: palette.pigs },
   { slug: 'pigs', label: "what am i gonna do with all these numbers", project: 'pigs', colors: palette.pigs },
 
